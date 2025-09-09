@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-// Главный класс. Показывает исходные данные и результаты каждой фильтрации.
+// Главный класс. Исходные данные и результаты каждой фильтрации.
 
 public class Main {
 
@@ -15,7 +15,7 @@ public class Main {
         // Создаем фильтр
         FlightFilter filter = new FlightFilter();
 
-        System.out.println("=== ИСХОДНЫЙ СПИСОК ПЕРЕЛЁТОВ ===");
+        System.out.println("-= ИСХОДНЫЙ СПИСОК ПЕРЕЛЁТОВ =-");
         System.out.println(FlightPrinter.formatFlights(flights));
         System.out.println();
 
