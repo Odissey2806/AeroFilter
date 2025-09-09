@@ -20,47 +20,47 @@ public class Main {
         System.out.println();
 
         // Фильтр 1: Исключить перелёты с вылетом до текущего момента.
-        System.out.println("=== ФИЛЬТР 1: Исключить вылет до текущего момента ===");
+        System.out.println("=== ФИЛЬТР 1: Перелёты после исключения вылетов до текущего момента ===");
         List<Flight> filtered1 = filter.filter(flights, new DepartureBeforeCurrentTimeFilter());
-        System.out.println("Осталось перелётов: " + filtered1.size());
+        System.out.println("Количество перелётов: " + filtered1.size());
         System.out.println(FlightPrinter.formatFlights(filtered1));
         System.out.println();
 
-        // Фильтр 2: Исключить сегменты с датой прилёта раньше даты вылета.
-        System.out.println("=== ФИЛЬТР 2: Исключить прилёт раньше вылета ===");
+        // Фильтр 2: Исключить перелёты, содержащие сегменты с датой прилёта раньше даты вылета.
+        System.out.println("=== ФИЛЬТР 2: Перелёты после исключения прилёта раньше вылета ===");
         List<Flight> filtered2 = filter.filter(flights, new ArrivalBeforeDepartureFilter());
-        System.out.println("Осталось перелётов: " + filtered2.size());
+        System.out.println("Количество перелётов: " + filtered2.size());
         System.out.println(FlightPrinter.formatFlights(filtered2));
         System.out.println();
 
-        // Фильтр 3: Исключить перелёты с временем на земле > 2 часов
-        System.out.println("=== ФИЛЬТР 3: Исключить время на земле > 2 часов ===");
+        // Фильтр 3: Исключить перелёты с общим временем на земле > 2 часов
+        System.out.println("=== ФИЛЬТР 3: Перелёты после исключения времени на земле > 2 часов ===");
         List<Flight> filtered3 = filter.filter(flights, new ExcessiveGroundTimeFilter());
-        System.out.println("Осталось перелётов: " + filtered3.size());
+        System.out.println("Количество перелётов: " + filtered3.size());
         System.out.println(FlightPrinter.formatFlights(filtered3));
         System.out.println();
 
         // Показать какие перелёты исключаются каждым правилом
-        System.out.println("=== ПЕРЕЛЁТЫ, ИСКЛЮЧАЕМЫЕ КАЖДЫМ ПРАВИЛОМ ===");
+        //System.out.println("=== ПЕРЕЛЁТЫ, ИСКЛЮЧАЕМЫЕ КАЖДЫМ ПРАВИЛОМ ===");
 
-        System.out.println("Исключаемые правилом 1 (вылет в прошлом):");
-        List<Flight> excluded1 = flights.stream()
-                .filter(flight -> !new DepartureBeforeCurrentTimeFilter().test(flight))
-                .collect(Collectors.toList());
-        System.out.println(FlightPrinter.formatFlights(excluded1));
+        //System.out.println("Исключаемые правилом 1 (вылет в прошлом):");
+        //List<Flight> excluded1 = flights.stream()
+        //        .filter(flight -> !new DepartureBeforeCurrentTimeFilter().test(flight))
+        //        .collect(Collectors.toList());
+        //System.out.println(FlightPrinter.formatFlights(excluded1));
 
-        System.out.println("Исключаемые правилом 2 (прилёт раньше вылета):");
-        List<Flight> excluded2 = flights.stream()
-                .filter(flight -> !new ArrivalBeforeDepartureFilter().test(flight))
-                .collect(Collectors.toList());
-        System.out.println(FlightPrinter.formatFlights(excluded2));
+        //System.out.println("Исключаемые правилом 2 (прилёт раньше вылета):");
+        //List<Flight> excluded2 = flights.stream()
+        //        .filter(flight -> !new ArrivalBeforeDepartureFilter().test(flight))
+        //       .collect(Collectors.toList());
+        //System.out.println(FlightPrinter.formatFlights(excluded2));
 
-        System.out.println("Исключаемые правилом 3 (время на земле больше > 2ч):");
-        List<Flight> excluded3 = flights.stream()
-                .filter(flight -> !new ExcessiveGroundTimeFilter().test(flight))
-                .collect(Collectors.toList());
-        System.out.println(FlightPrinter.formatFlights(excluded3));
-        System.out.println();
+        //System.out.println("Исключаемые правилом 3 (время на земле больше > 2ч):");
+        //List<Flight> excluded3 = flights.stream()
+        //        .filter(flight -> !new ExcessiveGroundTimeFilter().test(flight))
+        //       .collect(Collectors.toList());
+        //System.out.println(FlightPrinter.formatFlights(excluded3));
+        //System.out.println();
 
         // Комбинированный фильтр: все три правила сразу!
         System.out.println("=== КОМБИНИРОВАННЫЙ ФИЛЬТР: Все три правила ===");
@@ -69,8 +69,7 @@ public class Main {
                 new ArrivalBeforeDepartureFilter(),
                 new ExcessiveGroundTimeFilter()
         );
-
-        System.out.println("Осталось перелётов после всех фильтров: " + filteredAll.size());
+        System.out.println("Количество перелётов после всех фильтров: " + filteredAll.size());
         System.out.println(FlightPrinter.formatFlights(filteredAll));
 
         // Демонстрация использования фабрики правил

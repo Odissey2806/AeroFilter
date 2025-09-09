@@ -7,8 +7,7 @@ public class ArrivalBeforeDepartureFilter implements FilterRule {
     @Override
     public boolean test(Flight flight) {
         // Проверяем, что все сегменты корректны (прилёт не раньше вылета)
-        return flight.getSegments().stream()
-                .allMatch(Segment::isValid);
+        return !flight.hasInvalidSegments();
     }
 
     @Override
