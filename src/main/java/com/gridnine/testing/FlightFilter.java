@@ -1,6 +1,7 @@
 package com.gridnine.testing;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 // Класс для фильтрации перелётов по различным правилам.
@@ -14,6 +15,9 @@ public class FlightFilter {
     // @return отфильтрованный список перелётов
 
     public List<Flight> filter(List<Flight> flights, FilterRule rule) {
+        // Проверка на Null и Невалидные данные, чтобы избежать NullPointerException
+        Objects.requireNonNull(flights, "Список перелётов не может быть null");
+        Objects.requireNonNull(rule, "Правило фильтрации не может быть null");
         return flights.stream()
                 .filter(rule::test)
                 .collect(Collectors.toList());

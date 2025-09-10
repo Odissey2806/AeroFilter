@@ -40,28 +40,6 @@ public class Main {
         System.out.println(FlightPrinter.formatFlights(filtered3));
         System.out.println();
 
-        // Показать какие перелёты исключаются каждым правилом
-        //System.out.println("=== ПЕРЕЛЁТЫ, ИСКЛЮЧАЕМЫЕ КАЖДЫМ ПРАВИЛОМ ===");
-
-        //System.out.println("Исключаемые правилом 1 (вылет в прошлом):");
-        //List<Flight> excluded1 = flights.stream()
-        //        .filter(flight -> !new DepartureBeforeCurrentTimeFilter().test(flight))
-        //        .collect(Collectors.toList());
-        //System.out.println(FlightPrinter.formatFlights(excluded1));
-
-        //System.out.println("Исключаемые правилом 2 (прилёт раньше вылета):");
-        //List<Flight> excluded2 = flights.stream()
-        //        .filter(flight -> !new ArrivalBeforeDepartureFilter().test(flight))
-        //       .collect(Collectors.toList());
-        //System.out.println(FlightPrinter.formatFlights(excluded2));
-
-        //System.out.println("Исключаемые правилом 3 (время на земле больше > 2ч):");
-        //List<Flight> excluded3 = flights.stream()
-        //        .filter(flight -> !new ExcessiveGroundTimeFilter().test(flight))
-        //       .collect(Collectors.toList());
-        //System.out.println(FlightPrinter.formatFlights(excluded3));
-        //System.out.println();
-
         // Комбинированный фильтр: все три правила сразу!
         System.out.println("=== КОМБИНИРОВАННЫЙ ФИЛЬТР: Все три правила ===");
         List<Flight> filteredAll = filter.filter(flights,
