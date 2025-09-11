@@ -94,7 +94,7 @@ AttestationAeroFilter/
 
     - new ArrivalBeforeDepartureFilter()
 
-### 3. Excessive Ground Time
+### 3. Чрезмерное прибывание на земле
 
 Исключает перелёты, где общее время на земле превышает 2 часа.
 
